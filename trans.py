@@ -9,7 +9,7 @@
 import torch as t
 from torch import nn, einsum
 
-class myEmbedding(nn.Module):
+class MyEmbedding(nn.Module):
     def __init__(self, n_embeds, embed_dim):
         super().__init__()
         self.weights = nn.Parameter(t.randn((n_embeds, embed_dim)))
@@ -93,10 +93,10 @@ class myTransformer(nn.Module):
         return x
 
     def positional_embedding(self, n_embeds: int=1024, embed_dim: int=768):
-        return myEmbedding(n_embeds, embed_dim) # input unused
+        return MyEmbedding(n_embeds, embed_dim) # input unused
 
     def token_embedding(self, n_embeds: int=1024, embed_dim: int=768):
-        return myEmbedding(n_embeds, embed_dim)
+        return MyEmbedding(n_embeds, embed_dim)
 
 if __name__ == '__main__':
     trans = myTransformer()
